@@ -1,0 +1,28 @@
+a{
+    font-size: 4vh;
+    background-color: bisque;
+    text-decoration: none;
+    color: black;
+    width: 50vh;
+    height: 34vh;
+    line-height: 34vh;
+    margin: 22.5vh;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+}
+
+a:hover{
+    position: relative;
+    transform: translate(-6px,-6px);
+    background-color: burlywood;
+}
+
+h1{
+    text-align: center;
+}
+
+.container{
+    display: felx;
+    justify-content: center;
+}
