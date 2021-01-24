@@ -2,25 +2,22 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" href="styles/new.css">
+        <link rel="stylesheet" href="styles/new.css">
         <script src="js/new.js"></script>
         <title>Tworzenie nowej faktury</title>
     </head>
     <body>
         <form method="post" action="php/create_invoice.php">
+            <a href="index.html">Home</a>
             <h1>Nowa faktura</h1>
-            Nabywca <input type="text" placeholder="Nabywca" name="buyer">
-            Data sprzedaży <input type="date" name="buy_date">
-            Data Wystawienia <input type="date" name="date_of_invoice">
-            Termin płatności <input type="date" name="date_of_payment">
-            Miejsce Wystawienia <input type="text" name="place_of_invoice"><br>
-            <table id="items">
-                <button onclick="new_row()" type="button">+ Nowa Pozycja</button>
-            </table>
-            <select>
-                <option>1</option>
-                <option>2</option>
-            </select>
+            Nabywca <br><input type="text" placeholder="Nabywca" name="buyer"><br>
+            Data sprzedaży <input type="date" name="buy_date"><br>
+            Data Wystawienia <input type="date" name="date_of_invoice"><br>
+            Termin płatności <input type="date" name="date_of_payment"><br>
+            Miejsce Wystawienia <input type="text" placeholder="Szczecin" name="place_of_invoice"><br>
+            <button onclick="new_row()" type="button">+ Nowa Pozycja</button>
+            <table id="items"></table><br>
+            <button type="submit">Zatwierdź</button>
         </form>
     </body>
 </html>
