@@ -6,9 +6,6 @@
 
 </html>
 <?php
-foreach($_POST['name_of_item'] as $value){
-    echo $value.'<br>';
-}
 #connect to database
 $con = mysqli_connect('localhost','root','','iai');
 #if doesn't exist add customer to database
@@ -36,7 +33,26 @@ $payment_date = $_POST['payment_date'];
 $create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`) VALUES
                     ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue')";
 mysqli_query($con,$create_invoice);
+#get invoice number
+$get_invoice_number = "SELECT MAX(nr) FROM invoices"; #zdaję sobie sprawę z niepoprawności tego rozwiązanie jednak na tem moment tylko takie przychodzi mi do głowy
+$invoice_number = mysqli_query($con,$get_invoice_number);
+$invoice_number_value = getValue($invoice_number);
 #add products
+if (isset($_POST['name_of_item'])){
+    $name_of_item = $_POST['name_of_item'];
+    $quantity = $_POST['quantity'];
+    $unit = $_POST['unit'];
+    $price_brutto = $_POST['price_brutto'];
+    $discount = $_POST['discount'];
+    $vat = $_POST['vat'];
+    $add_row = "INSERT INTO `rows`(`invoice_nr`, `name`, `quantity`, `unit`, `price_brutto`, `discount`, `vat`) VALUES ";
+    for ($i = 0; $i < count($name_of_item); $i++){
+        $add_row = $add_row."('$invoice_number_value','$name_of_item[$i]','$quantity[$i]','$unit[$i]','$price_brutto[$i]','$discount[$i]','$vat[$i]')";
+        $i < count($name_of_item) - 1 ? $add_row = $add_row.',' : $add_row = $add_row.";";
+    }
+    echo $add_row;
+    mysqli_query($con,$add_row);
+}
 
 #dissconect from database
 $con -> close();
@@ -51,7 +67,7 @@ function printDatabase($result){
         echo "</tr>";
     }
 }
-#function for getting value of id for invoice
+#function for getting value of exact element from database
 function getValue($result){
     $p = mysqli_fetch_row($result);
     return $p[0];
