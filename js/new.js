@@ -10,7 +10,14 @@ const new_row = () => {
             <td><input type="number" placeholder="cena brutto"></td>
             <td><input type="number" placeholder="Rabat (%)"></td>
             <td>Po rabacie : <div id="after_discount${number_of_rows}"></div></td>
-            <td><select><option>zw.</option><option>0%</option><option>5%</option><option>8%</option><option>23%</option></select></td>
+            <td><select>
+                    <option value="zw">zw.</option>
+                    <option value="0">0%</option>
+                    <option value="5">5%</option>
+                    <option value="8">8%</option>
+                    <option value="23">23%</option>
+                </select>
+            </td>
         </tr>
         <button id="button${number_of_rows}" onclick="remove_row(${number_of_rows})" type="button">- Usuń wiersz</button>`;
     number_of_rows++;  
