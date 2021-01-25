@@ -1,7 +1,7 @@
 <html lang="pl">
     <head>
         <meta charset="utf-8">
-        <link rel="stylesheet" href="../styles/create_invoice.css">
+        <link rel="stylesheet" href="../css/create_invoice.css">
         <title>Faktura dodana pomyślnie</title>
     </head>
 </html>
