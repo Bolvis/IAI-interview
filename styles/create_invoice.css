@@ -1,0 +1,18 @@
+body{
+    text-align: center;
+}
+p{
+    color: green;
+    font-size: 8vh;
+    text-align: center;
+    margin-top: 15%;
+}
+
+a{
+    font-size: 4vh;
+    width: 20%;
+    height: 15%;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+}

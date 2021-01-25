@@ -5,10 +5,10 @@ const new_row = () => {
     table.innerHTML +=
         `<tr id="row${number_of_rows}">
             <td ><input type="text" name="name_of_item[]" placeholder="Nazwa towaru lub usługi"></td>
-            <td><input type="number" name="quantity[]" placeholder="ilosc"></td>
+            <td><input type="number" step=".01" name="quantity[]" placeholder="ilosc"></td>
             <td><input type="text" name="unit[]" placeholder="jednostka"></td>
-            <td><input type="number" name="price_brutto[]" placeholder="cena brutto"></td>
-            <td><input type="number" name="discount[]" placeholder="Rabat (%)"></td>
+            <td><input type="number" step=".01" name="price_brutto[]" placeholder="cena brutto"></td>
+            <td><input type="number" step=".01" name="discount[]" placeholder="Rabat (%)"></td>
             <td><select name="vat[]">
                     <option value="zw">zw.</option>
                     <option value="0">0%</option>

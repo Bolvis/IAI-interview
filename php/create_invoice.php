@@ -1,9 +1,9 @@
 <html lang="pl">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="../styles/create_invoice.css">
         <title>Faktura dodana pomyślnie</title>
     </head>
-
 </html>
 <?php
 #connect to database
@@ -50,26 +50,14 @@ if (isset($_POST['name_of_item'])){
         $add_row = $add_row."('$invoice_number_value','$name_of_item[$i]','$quantity[$i]','$unit[$i]','$price_brutto[$i]','$discount[$i]','$vat[$i]')";
         $i < count($name_of_item) - 1 ? $add_row = $add_row.',' : $add_row = $add_row.";";
     }
-    echo $add_row;
     mysqli_query($con,$add_row);
 }
-
 #dissconect from database
 $con -> close();
-#test function for printing query results
-function printDatabase($result){
-    echo "<table border=1>";
-    while($p = mysqli_fetch_row($result)){
-        echo "<tr>";
-        foreach($p as $value){
-            echo "<td>$value</td>";
-        }
-        echo "</tr>";
-    }
-}
+#success screen
+echo "<p>Faktura dodana pomyślnie</p><a href='../index.html'>Powrót do strony głównej</a>";
 #function for getting value of exact element from database
 function getValue($result){
     $p = mysqli_fetch_row($result);
     return $p[0];
 }
-
