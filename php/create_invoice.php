@@ -6,6 +6,9 @@
 
 </html>
 <?php
+foreach($_POST['name_of_item'] as $value){
+    echo $value.'<br>';
+}
 #connect to database
 $con = mysqli_connect('localhost','root','','iai');
 #if doesn't exist add customer to database
@@ -33,6 +36,8 @@ $payment_date = $_POST['payment_date'];
 $create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`) VALUES
                     ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue')";
 mysqli_query($con,$create_invoice);
+#add products
+
 #dissconect from database
 $con -> close();
 #test function for printing query results

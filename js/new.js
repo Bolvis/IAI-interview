@@ -4,13 +4,12 @@ const new_row = () => {
     const table = document.getElementById("items");
     table.innerHTML +=
         `<tr id="row${number_of_rows}">
-            <td ><input type="text" name="name_of_item" placeholder="Nazwa towaru lub usługi"></td>
-            <td><input type="number" placeholder="ilosc"></td>
-            <td><input type="text" placeholder="jednostka"></td>
-            <td><input type="number" placeholder="cena brutto"></td>
-            <td><input type="number" placeholder="Rabat (%)"></td>
-            <td>Po rabacie : <div id="after_discount${number_of_rows}"></div></td>
-            <td><select>
+            <td ><input type="text" name="name_of_item[]" placeholder="Nazwa towaru lub usługi"></td>
+            <td><input type="number" name="quantity[]" placeholder="ilosc"></td>
+            <td><input type="text" name="unit[]" placeholder="jednostka"></td>
+            <td><input type="number" name="price_brutto[]" placeholder="cena brutto"></td>
+            <td><input type="number" name="discount[]" placeholder="Rabat (%)"></td>
+            <td><select name="vat[]">
                     <option value="zw">zw.</option>
                     <option value="0">0%</option>
                     <option value="5">5%</option>
