@@ -5,6 +5,7 @@
         <title>Lista Faktur</title>
     </head>
     <body>
+        <a href="../index.html">Strona Główna</a>
         <h1>Lista faktur</h1>
     </body>
 </html>
@@ -19,6 +20,6 @@ while ($row = mysqli_fetch_row($all_invoices)){
     foreach ($row as $value){
         echo "<td>$value</td>";
     }
-    echo "<td><button name='choice' value='$row[0]' type='submit'>download pdf</button></td></tr>";
+    echo "<td><button name='choice' value='$row[0]' type='submit'>pobierz pdf</button></td></tr>";
 }
 echo "</form>";

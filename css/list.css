@@ -5,3 +5,11 @@ body{
 table{
     margin: 0 auto;
 }
+
+a{
+    float: left;
+}
+
+h1{
+    clear: both;
+}
