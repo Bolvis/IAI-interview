@@ -10,11 +10,15 @@
         <form method="post" action="php/create_invoice.php">
             <a href="index.html">Home</a>
             <h1>Nowa faktura</h1>
-            Nabywca <br><input type="text" placeholder="Nabywca" name="buyer"><br>
-            Data sprzedaży <input type="date" name="buy_date"><br>
-            Data Wystawienia <input type="date" name="date_of_invoice"><br>
-            Termin płatności <input type="date" name="date_of_payment"><br>
-            Miejsce Wystawienia <input type="text" placeholder="Szczecin" name="place_of_invoice"><br>
+            Nabywca <br><input type="text" placeholder="Nazwa fimry" name="buyer"><br>
+            NIP <br><input type="text" placeholder="nip" name="nip"><br>
+            Kod Pocztowy <br><input type="text" placeholder="71-899" name="zip"><br>
+            Miasto <br><input type="text" placeholder="Miasto" name="town"><br>
+            Ulica <br><input type="text" placeholder="Ulica" name="street"><br>
+            Nr budynku/lokalu <br><input type="text" placeholder="72/8A" name="apartment"><br>
+            Data sprzedaży <input type="date" name="sale_date"><br>
+            Data Wystawienia <input type="date" name="date_of_issue"><br>
+            Termin płatności <input type="date" name="payment_date"><br>
             <button onclick="new_row()" type="button">+ Nowa Pozycja</button>
             <table id="items"></table><br>
             <button type="submit">Zatwierdź</button>
