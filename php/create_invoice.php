@@ -19,6 +19,7 @@ if (mysqli_num_rows($res) != 1){
     $town = $_POST['town'];
     $street = $_POST['street'];
     $apartment = $_POST['apartment'];
+
     $add_customer = "INSERT INTO `customers`(`nip`, `company_name`, `zip`, `street`, `apartment`, `town`) VALUES 
                     ('$nip', '$buyer', '$zip', '$street', '$apartment', '$town')";
     mysqli_query($con,$add_customer);
@@ -30,8 +31,10 @@ $invoice_customer_id = getValue($id);
 $sale_date = $_POST['sale_date'];
 $date_of_issue = $_POST['date_of_issue'];
 $payment_date = $_POST['payment_date'];
-$create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`) VALUES
-                    ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue')";
+$payment_method = $_POST['payment_method'];
+$payed = $_POST['payed'];
+$create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`, `payment_method`, `payed`) VALUES
+                    ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue', '$payment_method', '$payed')";
 mysqli_query($con,$create_invoice);
 #get invoice number
 $get_invoice_number = "SELECT MAX(nr) FROM invoices"; #zdaję sobie sprawę z niepoprawności tego rozwiązanie jednak na tem moment tylko takie przychodzi mi do głowy

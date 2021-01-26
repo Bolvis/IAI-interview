@@ -23,3 +23,4 @@ while ($row = mysqli_fetch_row($all_invoices)){
     echo "<td><button name='choice' value='$row[0]' type='submit'>pobierz pdf</button></td></tr>";
 }
 echo "</form>";
+$con -> close();
