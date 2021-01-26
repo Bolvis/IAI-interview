@@ -18,9 +18,6 @@ $invoice->AddPage();
 $html = <<<EOD
 <style> 
 /*TODO zrobić ładne style*/
-p{
-    width: 50%;
-}
 </style>
 <img src="../images/logo.png" alt="logo" width="250">
 <div>Faktura nr $choice</div>
