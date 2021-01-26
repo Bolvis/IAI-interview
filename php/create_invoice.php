@@ -33,8 +33,9 @@ $date_of_issue = $_POST['date_of_issue'];
 $payment_date = $_POST['payment_date'];
 $payment_method = $_POST['payment_method'];
 $payed = $_POST['payed'];
-$create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`, `payment_method`, `payed`) VALUES
-                    ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue', '$payment_method', '$payed')";
+$comments = $_POST['comments'];
+$create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`, `payment_method`, `payed`, `comments`) VALUES
+                    ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue', '$payment_method', '$payed', '$comments')";
 mysqli_query($con,$create_invoice);
 #get invoice number
 $get_invoice_number = "SELECT MAX(nr) FROM invoices"; #zdaję sobie sprawę z niepoprawności tego rozwiązanie jednak na tem moment tylko takie przychodzi mi do głowy
@@ -46,11 +47,10 @@ if (isset($_POST['name_of_item'])){
     $quantity = $_POST['quantity'];
     $unit = $_POST['unit'];
     $price_brutto = $_POST['price_brutto'];
-    $discount = $_POST['discount'];
     $vat = $_POST['vat'];
-    $add_row = "INSERT INTO `rows`(`invoice_nr`, `name`, `quantity`, `unit`, `price_brutto`, `discount`, `vat`) VALUES ";
+    $add_row = "INSERT INTO `rows`(`invoice_nr`, `name`, `quantity`, `unit`, `price_brutto`, `vat`) VALUES ";
     for ($i = 0; $i < count($name_of_item); $i++){
-        $add_row = $add_row."('$invoice_number_value','$name_of_item[$i]','$quantity[$i]','$unit[$i]','$price_brutto[$i]','$discount[$i]','$vat[$i]')";
+        $add_row = $add_row."('$invoice_number_value','$name_of_item[$i]','$quantity[$i]','$unit[$i]','$price_brutto[$i]','$vat[$i]')";
         $i < count($name_of_item) - 1 ? $add_row = $add_row.',' : $add_row = $add_row.";";
     }
     mysqli_query($con,$add_row);

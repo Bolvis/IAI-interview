@@ -8,7 +8,6 @@ const new_row = () => {
             <td><input type="number" step=".01" name="quantity[]" placeholder="ilosc"></td>
             <td><input type="text" name="unit[]" placeholder="jednostka"></td>
             <td><input type="number" step=".01" name="price_brutto[]" placeholder="cena brutto"></td>
-            <td><input type="number" step=".01" name="discount[]" placeholder="Rabat (%)"></td>
             <td><select name="vat[]">
                     <option value="zw">zw.</option>
                     <option value="0">0%</option>

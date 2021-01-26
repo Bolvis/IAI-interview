@@ -20,7 +20,9 @@ while ($row = mysqli_fetch_row($all_invoices)){
     foreach ($row as $value){
         echo "<td>$value</td>";
     }
-    echo "<td><button name='choice' value='$row[0]' type='submit'>pobierz pdf</button></td></tr>";
+    echo "<td><button name='choice' value='$row[0]' type='submit'>pobierz pdf</button></td>
+           <td><button name='delete' value='$row[0]' type='button'>usuń fakturę</button></td>
+           </tr>";
 }
 echo "</form>";
 $con -> close();
