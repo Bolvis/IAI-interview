@@ -67,7 +67,7 @@ numer konta<br>
     <tr style=\"border: 1px solid black;\">
         <td class=\"products\" style=\"width: 20px;\">L.P</td>
         <td class=\"products\" style=\"width: 185px;\">Nazwa</td>
-        <td class=\"products\" style=\"width: 25px;\">Jend</td>
+        <td class=\"products\" style=\"width: 25px;\">Jedn</td>
         <td class=\"products\" style=\"width: 55px;\">Ilość</td>
         <td class=\"products\">Cena brutto</td>
         <td class=\"products\" style=\"width: 35px;\">Stawka</td>
@@ -77,14 +77,16 @@ numer konta<br>
 ";
 $i = 1;
 while ($row = mysqli_fetch_row($rows_data)){
+    $value_brutto = (float)$row[5] * (float)$row[3];
+    $row[6] != "zw" ? $value_netto = (1.0 - (float)$row[6]/100) * $value_brutto : $value_netto = $value_brutto;
     $html .= "<tr><td class=\"products\">$i</td>";
     $html .= "<td class=\"products\">$row[2]</td>";
     $html .= "<td class=\"products\">$row[4]</td>";
     $html .= "<td class=\"products\">$row[3]</td>";
     $html .= "<td class=\"products\">$row[5]</td>";
-    $row[7] != "zw" ? $html .= "<td class=\"products\">$row[7]%</td>" : $html .= "<td class=\"products\">$row[7]</td>";
-    $html .= "<td class=\"products\"></td>";
-    $html .= "<td class=\"products\"></td>";
+    $row[6] != "zw" ? $html .= "<td class=\"products\">$row[6]%</td>" : $html .= "<td class=\"products\">$row[6]</td>";
+    $html .= "<td class=\"products\">$value_netto</td>";
+    $html .= "<td class=\"products\">$value_brutto</td>";
     $html .= "</tr>";
     $i++;
 }
