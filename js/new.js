@@ -1,6 +1,6 @@
 let number_of_rows = 0;
 const rows = [];
-let row = new Row("imie",3,"szt.",231.23,23);
+
 const pushRow = (row_num) => {
     const name_of_item = document.getElementById("name" + row_num);
     const quantity = document.getElementById("quantity" + row_num);

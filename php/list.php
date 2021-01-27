@@ -24,7 +24,6 @@ while ($row = mysqli_fetch_row($all_invoices)){
         echo "<td>$value</td>";
     }
     echo "<td><button name='choice' value='$row[0]' form='download' type='submit'>pobierz pdf</button></td>
-          <td><button name='choice' value='$row[0]' form='delete' type='submit'>usuń fakturę</button></td>
-           </tr>";
+          <td><button name='choice' value='$row[0]' form='delete' type='submit'>usuń fakturę</button></td></tr>";
 }
 $con -> close();
