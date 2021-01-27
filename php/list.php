@@ -12,10 +12,11 @@
     </body>
 </html>
 <?php
+#getting database data
 $con = mysqli_connect('localhost', 'root', '','iai');
 $get_all_invoices = "SELECT nr, company_name, date_of_issue FROM invoices INNER JOIN customers ON invoices.customer_id = customers.id ORDER BY date_of_issue DESC";
 $all_invoices = mysqli_query($con, $get_all_invoices);
-
+#creating list
 echo "<table border='1'>";
 while ($row = mysqli_fetch_row($all_invoices)){
     echo "<tr>";
