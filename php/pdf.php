@@ -260,7 +260,7 @@ function num_to_words ($kw) {
     $t_kw_1 = array('tysiąc','tysięcy','tysiące');
     $t_kw_0 = array('złoty','złotych','złote');
 
-    if ($kw != '') {
+    if ($kw != '' or $kw != '0') {
         $kw = (substr_count($kw,'.') == 0) ? $kw.'.00' : $kw;
         $tmp = explode(".",$kw);
         $tmp[1] .= strlen($tmp[1]) == 1 ? '0' : '';
@@ -274,6 +274,7 @@ function num_to_words ($kw) {
         $kw_w = ($kw_w == '') ? $tmp[0] : $kw_w;
         $paczki = (strlen($kw_w)/3)-1;
         $p_tmp = $paczki;
+        $kw_slow = '';
         for( $i = 0; $i <= $paczki; $i++) {
             $t_tmp = 't_kw_'.$p_tmp;
             $p_tmp--;
@@ -291,6 +292,8 @@ function num_to_words ($kw) {
             $kw_slow .= $kw_w_s.' '.$ka.' ';
         }
     }
-    $text = $kw_slow.' '.(int)$tmp[1].'/100';
-    return $text;
+    if ($kw == '0'){
+        $kw_slow = 'zero złoty';
+    }
+    return $kw_slow.' '.(int)$tmp[1].'/100';
 }
