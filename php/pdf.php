@@ -191,26 +191,26 @@ $html .=
         </tr>
     </table>
     </td>
-    <td></td>
+    <td style=\"width:110px\"></td>
     <td>
     <table>
         <tr>
             <td style=\"width:60px\">Zapłacono</td>
-            <td style=\"width:60px\">$invoice_data_array[6] PLN</td>
+            <td style=\"width:180px;\">$invoice_data_array[6] PLN</td>
         </tr>
          <tr>
             <td style=\"width:60px\">Do zapłaty</td>
-            <td style=\"width:60px\">$summary_brutto PLN</td>
+            <td style=\"width:180px\">$summary_brutto PLN</td>
         </tr>   
         <tr>
             <td style=\"width:60px\">Razem</td>
-            <td style=\"width:60px\">$summary PLN</td>
+            <td style=\"width:180px; text-align: left;\">$summary PLN</td>
         </tr> 
         <tr>
             <td>Słownie</td>      
         </tr>
         <tr>
-            <td style=\"width:175px\">$summary_word</td> 
+            <td style=\"width:240px\">$summary_word</td> 
         </tr>
     </table>
 </td>
