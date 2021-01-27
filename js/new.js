@@ -43,8 +43,9 @@ const new_row = () => {
                     <option value="23">23%</option>
                 </select>
             </td>
+            <td style="width: 100px;"><button id="button${number_of_rows}" onclick="remove_row(${number_of_rows})" type="button">- Usuń wiersz</button></td>
         </tr>
-        <button id="button${number_of_rows}" onclick="remove_row(${number_of_rows})" type="button">- Usuń wiersz</button>`;
+        `;
     rows.push(new Row('','', '', '', ''));
     setRows();
     number_of_rows++;  
