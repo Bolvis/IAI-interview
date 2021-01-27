@@ -66,7 +66,7 @@ numer konta<br>
 <div></div>
 <table>
     <tr style=\"border: 1px solid black;\">
-        <td class=\"products\" style=\"width: 20px;\">L.P</td>
+        <td class=\"products\" style=\"width: 20px;\">L.p.</td>
         <td class=\"products\" style=\"width: 150px;\">Nazwa</td>
         <td class=\"products\" style=\"width: 25px;\">Jedn</td>
         <td class=\"products\" style=\"width: 55px;\">Ilość</td>
