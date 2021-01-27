@@ -12,18 +12,19 @@
         <form method="post" action="php/create_invoice.php">
             <a href="index.html">Strona Główna</a>
             <h1>Nowa faktura</h1>
-            Nabywca <br><input type="text" placeholder="Nazwa fimry" name="buyer" value="test s.a."><br>
-            NIP <br><input type="text" placeholder="nip" name="nip" value="2"><br>
-            Kod Pocztowy <br><input type="text" placeholder="71-899" name="zip" value="00-000"><br>
-            Miasto <br><input type="text" placeholder="Miasto" name="town" value="Szczecin"><br>
-            Ulica <br><input type="text" placeholder="Ulica" name="street" value="Piastow"><br>
-            Nr budynku/lokalu <br><input type="text" placeholder="72/8A" name="apartment" value="8"><br>
-            Metoda Płatności <br><input type="text" placeholder="przelew" name="payment_method" value="przelew"><br>
-            Zapłacono <br><input type="number" step=".01" name="payed" placeholder="zapłacono" value="0"><br>
-            Uwagi <br><textarea maxlength="255" name="comments" placeholder="uwagi dodatkowe" value="moja uwaga"></textarea><br>
-            Data sprzedaży <input type="date" name="sale_date" value="2021-01-01"><br>
-            Data Wystawienia <input type="date" name="date_of_issue" value="2021-01-01"><br>
-            Termin płatności <input type="date" name="payment_date" value="2021-01-01"><br>
+            Klient jest w systemie <input style="width: 15px;" type="checkbox" onchange="hide()" name="is_in"><br>
+            <div class="useless">Nabywca <br><input class="useless" type="text" placeholder="Nazwa fimry" name="buyer" ><br></div>
+            NIP <br><input type="text" placeholder="nip" name="nip"><br>
+            <div class="useless">Kod Pocztowy <br><input class="useless" type="text" placeholder="71-899" name="zip"><br></div>
+            <div class="useless">Miasto <br><input class="useless" type="text" placeholder="Miasto" name="town"><br></div>
+            <div class="useless">Ulica <br><input class="useless" type="text" placeholder="Ulica" name="street"><br></div>
+            <div class="useless">Nr budynku/lokalu <br><input class="useless" type="text" placeholder="72/8A" name="apartment"><br></div>
+            Metoda Płatności <br><input type="text" placeholder="przelew" name="payment_method"><br>
+            Zapłacono <br><input type="number" step=".01" name="payed" placeholder="zapłacono"><br>
+            Uwagi <br><textarea maxlength="255" name="comments" placeholder="uwagi dodatkowe"></textarea><br>
+            Data sprzedaży <input type="date" name="sale_date"><br>
+            Data Wystawienia <input type="date" name="date_of_issue"><br>
+            Termin płatności <input type="date" name="payment_date"><br>
             <button class="button" onclick="new_row()" type="button">+ Nowa Pozycja</button>
             <table id="items"></table><br>
             <button class="button" type="submit">Zatwierdź</button>

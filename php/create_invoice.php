@@ -1,42 +1,49 @@
 <html lang="pl">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <link rel="stylesheet" href="../css/create_invoice.css">
         <title>Faktura dodana pomyślnie</title>
     </head>
-</html>
+    <body>
 <?php
 #connect to database
 $con = mysqli_connect('localhost','root','','iai');
 #if doesn't exist add customer to database
 $nip = $_POST['nip'];
-$check_if_exists = "SELECT * FROM customers WHERE nip = $nip";
-$res = mysqli_query($con,$check_if_exists);
+$stmt = $con -> prepare("SELECT * FROM customers WHERE nip = ?");
+$stmt -> bind_param("i",$nip);
+$stmt -> execute();
+$res = $stmt -> get_result();
+$stmt -> close();
 
 if (mysqli_num_rows($res) != 1){
-    $buyer = $_POST['buyer'];
-    $zip = $_POST['zip'];
-    $town = $_POST['town'];
-    $street = $_POST['street'];
-    $apartment = $_POST['apartment'];
-
-    $add_customer = "INSERT INTO `customers`(`nip`, `company_name`, `zip`, `street`, `apartment`, `town`) VALUES 
-                    ('$nip', '$buyer', '$zip', '$street', '$apartment', '$town')";
-    mysqli_query($con,$add_customer);
+    if(!isset($_POST['is_in'])){
+        $buyer = $_POST['buyer'];
+        $zip = $_POST['zip'];
+        $town = $_POST['town'];
+        $street = $_POST['street'];
+        $apartment = $_POST['apartment'];
+        $stmt = $con -> prepare("INSERT INTO `customers`(`nip`, `company_name`, `zip`, `street`, `apartment`, `town`) VALUES(?,?,?,?,?,?)");
+        $stmt -> bind_param("isssss", $nip, $buyer, $zip, $street, $apartment, $town);
+        $stmt -> execute();
+        $stmt -> close();
+    }
 }
 #adding invoice
-$customer_id = "SELECT id FROM customers WHERE nip = $nip";
-$id = mysqli_query($con,$customer_id);
-$invoice_customer_id = getValue($id);
+$stmt = $con -> prepare("SELECT id FROM customers WHERE nip = ?");
+$stmt -> bind_param("i",$nip);
+$stmt -> execute();
+$id = $stmt -> get_result();
 $sale_date = $_POST['sale_date'];
 $date_of_issue = $_POST['date_of_issue'];
 $payment_date = $_POST['payment_date'];
 $payment_method = $_POST['payment_method'];
 $payed = $_POST['payed'];
 $comments = $_POST['comments'];
-$create_invoice = "INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`, `payment_method`, `payed`, `comments`) VALUES
-                    ('$invoice_customer_id','$sale_date','$payment_date','$date_of_issue', '$payment_method', '$payed', '$comments')";
-mysqli_query($con,$create_invoice);
+$stmt = $con -> prepare("INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`, `payment_method`, `payed`, `comments`) VALUES (?,?,?,?,?,?,?)");
+$stmt -> bind_param("sssssss", $id, $sale_date, $payment_date, $date_of_issue, $payment_method, $payed, $comments);
+$stmt -> execute();
+$stmt -> close();
 #get invoice number
 $get_invoice_number = "SELECT MAX(nr) FROM invoices"; #zdaję sobie sprawę z niepoprawności tego rozwiązanie jednak na tem moment tylko takie przychodzi mi do głowy
 $invoice_number = mysqli_query($con,$get_invoice_number);
@@ -48,12 +55,12 @@ if (isset($_POST['name_of_item'])){
     $unit = $_POST['unit'];
     $price_brutto = $_POST['price_brutto'];
     $vat = $_POST['vat'];
-    $add_row = "INSERT INTO `rows`(`invoice_nr`, `name`, `quantity`, `unit`, `price_brutto`, `vat`) VALUES ";
     for ($i = 0; $i < count($name_of_item); $i++){
-        $add_row = $add_row."('$invoice_number_value','$name_of_item[$i]','$quantity[$i]','$unit[$i]','$price_brutto[$i]','$vat[$i]')";
-        $i < count($name_of_item) - 1 ? $add_row = $add_row.',' : $add_row = $add_row.";";
+        $stmt = $con -> prepare("INSERT INTO `rows`(`invoice_nr`, `name`, `quantity`, `unit`, `price_brutto`, `vat`) VALUES (?,?,?,?,?,?)");
+        $stmt -> bind_param("isdsds",$invoice_number_value, $name_of_item[$i], $quantity[$i], $unit[$i], $price_brutto[$i], $vat[$i]);
+        $stmt -> execute();
+        $stmt -> close();
     }
-    mysqli_query($con,$add_row);
 }
 #dissconect from database
 $con -> close();

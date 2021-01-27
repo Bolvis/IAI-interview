@@ -59,3 +59,11 @@ const remove_row = (row_num) => {
     setRows();
 }
 
+const hide = () => {
+    const to_hide_show = document.getElementsByClassName("useless");
+    for (let i = 0; i < to_hide_show.length; i++){
+        console.log(to_hide_show[i].value);
+        to_hide_show[i].style.display = to_hide_show[i].style.display === "none" ? "block" : "none";
+        to_hide_show[i].value = to_hide_show[i].value === null ? "brak" : null;
+    }
+}
