@@ -31,11 +31,11 @@ const new_row = () => {
     const table = document.getElementById("items");
     table.innerHTML +=
         `<tr id="row${number_of_rows}">
-            <td><input id="name${number_of_rows}" oninput="pushRow(${number_of_rows})" type="text" name="name_of_item[]" placeholder="Nazwa towaru lub usługi"></td>
+            <td><input maxlength="50" id="name${number_of_rows}" oninput="pushRow(${number_of_rows})" type="text" name="name_of_item[]" placeholder="Nazwa towaru lub usługi"></td>
             <td><input id="quantity${number_of_rows}" oninput="pushRow(${number_of_rows})" type="number" step=".01" name="quantity[]" placeholder="ilosc"></td>
-            <td><input id="unit${number_of_rows}" oninput="pushRow(${number_of_rows})" type="text" name="unit[]" placeholder="jednostka"></td>
+            <td><input maxlength="5" id="unit${number_of_rows}" oninput="pushRow(${number_of_rows})" type="text" name="unit[]" placeholder="jednostka"></td>
             <td><input id="price${number_of_rows}" oninput="pushRow(${number_of_rows})" type="number" step=".01" name="price_brutto[]" placeholder="cena brutto"></td>
-            <td><select id="vat${number_of_rows}" onchange="pushRow(${number_of_rows})" name="vat[]">
+            <td><select maxlength="3" id="vat${number_of_rows}" onchange="pushRow(${number_of_rows})" name="vat[]">
                     <option value="zw">zw.</option>
                     <option value="0">0%</option>
                     <option value="5">5%</option>

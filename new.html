@@ -13,13 +13,13 @@
             <a href="index.html">Strona Główna</a>
             <h1>Nowa faktura</h1>
             Klient jest w systemie <input style="width: 15px;" type="checkbox" onchange="hide()" name="is_in"><br>
-            <div class="useless">Nabywca <br><input class="useless" type="text" placeholder="Nazwa fimry" name="buyer" ><br></div>
-            NIP <br><input type="text" placeholder="nip" name="nip"><br>
-            <div class="useless">Kod Pocztowy <br><input class="useless" type="text" placeholder="71-899" name="zip"><br></div>
-            <div class="useless">Miasto <br><input class="useless" type="text" placeholder="Miasto" name="town"><br></div>
-            <div class="useless">Ulica <br><input class="useless" type="text" placeholder="Ulica" name="street"><br></div>
-            <div class="useless">Nr budynku/lokalu <br><input class="useless" type="text" placeholder="72/8A" name="apartment"><br></div>
-            Metoda Płatności <br><input type="text" placeholder="przelew" name="payment_method"><br>
+            <div class="useless">Nabywca <br><input maxlength="30" class="useless" type="text" placeholder="Nazwa fimry" name="buyer" ></div>
+            NIP <br><input maxlength="13" type="text" placeholder="nip" name="nip"><br>
+            <div class="useless">Kod Pocztowy <br><input maxlength="6" class="useless" type="text" placeholder="71-899" name="zip"></div>
+            <div class="useless">Miasto <br><input maxlength="20" class="useless" type="text" placeholder="Miasto" name="town"></div>
+            <div class="useless">Ulica <br><input maxlength="20" class="useless" type="text" placeholder="Ulica" name="street"></div>
+            <div class="useless">Nr budynku/lokalu <br><input maxlength="10" class="useless" type="text" placeholder="72/8A" name="apartment"></div>
+            Metoda Płatności <br><input maxlength="20" type="text" placeholder="przelew" name="payment_method"><br>
             Zapłacono <br><input type="number" step=".01" name="payed" placeholder="zapłacono"><br>
             Uwagi <br><textarea maxlength="255" name="comments" placeholder="uwagi dodatkowe"></textarea><br>
             Data sprzedaży <input type="date" name="sale_date"><br>

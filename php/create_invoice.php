@@ -34,6 +34,7 @@ $stmt = $con -> prepare("SELECT id FROM customers WHERE nip = ?");
 $stmt -> bind_param("i",$nip);
 $stmt -> execute();
 $id = $stmt -> get_result();
+$id_value = getValue($id);
 $sale_date = $_POST['sale_date'];
 $date_of_issue = $_POST['date_of_issue'];
 $payment_date = $_POST['payment_date'];
@@ -41,12 +42,13 @@ $payment_method = $_POST['payment_method'];
 $payed = $_POST['payed'];
 $comments = $_POST['comments'];
 $stmt = $con -> prepare("INSERT INTO `invoices`(`customer_id`, `sale_date`, `payment_date`, `date_of_issue`, `payment_method`, `payed`, `comments`) VALUES (?,?,?,?,?,?,?)");
-$stmt -> bind_param("sssssss", $id, $sale_date, $payment_date, $date_of_issue, $payment_method, $payed, $comments);
+$stmt -> bind_param("sssssss", $id_value, $sale_date, $payment_date, $date_of_issue, $payment_method, $payed, $comments);
 $stmt -> execute();
 $stmt -> close();
 #get invoice number
-$get_invoice_number = "SELECT MAX(nr) FROM invoices"; #zdaję sobie sprawę z niepoprawności tego rozwiązanie jednak na tem moment tylko takie przychodzi mi do głowy
-$invoice_number = mysqli_query($con,$get_invoice_number);
+$stmt = $con -> prepare("SELECT MAX(nr) FROM invoices"); #zdaję sobie sprawę z niepoprawności tego rozwiązanie jednak na tem moment tylko takie przychodzi mi do głowy
+$stmt -> execute();
+$invoice_number = $stmt -> get_result();
 $invoice_number_value = getValue($invoice_number);
 #add products
 if (isset($_POST['name_of_item'])){
