@@ -35,6 +35,7 @@ $stmt -> bind_param("i",$nip);
 $stmt -> execute();
 $id = $stmt -> get_result();
 $id_value = getValue($id);
+
 $sale_date = $_POST['sale_date'];
 $date_of_issue = $_POST['date_of_issue'];
 $payment_date = $_POST['payment_date'];

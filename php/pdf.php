@@ -85,6 +85,7 @@ $eight = 0;
 $twenty_three = 0;
 $summary_brutto = 0;
 $i = 1;
+
 while ($row = mysqli_fetch_row($rows_data)){
     $vat = $row[6];
     $price_brutto = (float)$row[5];
