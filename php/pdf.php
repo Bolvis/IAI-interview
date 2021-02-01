@@ -1,17 +1,18 @@
 <?php
 include_once('../tcpdf.php');
+include_once('./connection.php');
 #geting necessary data from database
 $choice = $_POST['choice'];
-$con = mysqli_connect('localhost','root','','iai');
+$con = new Connection();
 $get_invoice_data = "SELECT * FROM invoices WHERE nr = $choice";
-$invoice_data = mysqli_query($con,$get_invoice_data);
+$invoice_data = mysqli_query($con -> getConnection() ,$get_invoice_data);
 $invoice_data_array = mysqli_fetch_array($invoice_data);
 $get_customer_data = "SELECT * FROM customers WHERE id = $invoice_data_array[1]";
-$customer_data = mysqli_query($con,$get_customer_data);
+$customer_data = mysqli_query($con -> getConnection() ,$get_customer_data);
 $customer_data_array = mysqli_fetch_array($customer_data);
 $get_rows_data = "SELECT * FROM `rows` WHERE invoice_nr = $invoice_data_array[0]";
-$rows_data = mysqli_query($con, $get_rows_data);
-$con->close();
+$rows_data = mysqli_query($con -> getConnection() , $get_rows_data);
+$con -> getConnection() -> close();
 #setting up pdf
 $invoice = new TCPDF(PDF_PAGE_ORIENTATION,PDF_UNIT,PDF_PAGE_FORMAT,true,'UTF-8',false);
 $invoice->SetCreator(PDF_CREATOR);

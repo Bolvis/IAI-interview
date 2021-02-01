@@ -1,10 +1,11 @@
 <?php
+include_once('./connection.php');
 $choice = $_POST['choice'];
-$con = mysqli_connect('localhost','root','','iai');
-$stmt = $con -> prepare("DELETE FROM `invoices` WHERE nr = ?");
+$con = new Connection();
+$stmt = $con -> getConnection() -> prepare("DELETE FROM `invoices` WHERE nr = ?");
 $stmt -> bind_param("i",$choice);
 $stmt -> execute();
 $stmt -> close();
-$con -> close();
+$con -> getConnection() ->close();
 header('Location: list.php');
 exit();

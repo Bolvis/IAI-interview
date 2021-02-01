@@ -10,9 +10,10 @@
         <form target='_blank' method='POST' action='pdf.php' id="download"></form>
         <form method='POST' action='delete.php' id="delete"></form>
 <?php
+include_once('./connection.php');
 #getting database data
-$con = mysqli_connect('localhost', 'root', '','iai');
-$stmt = $con -> prepare("SELECT nr, company_name, date_of_issue FROM invoices INNER JOIN customers ON invoices.customer_id = customers.id ORDER BY nr DESC");
+$con = new Connection();
+$stmt = $con -> getConnection() -> prepare("SELECT nr, company_name, date_of_issue FROM invoices INNER JOIN customers ON invoices.customer_id = customers.id ORDER BY nr DESC");
 $stmt -> execute();
 $all_invoices = $stmt -> get_result();
 $stmt -> close();
@@ -27,7 +28,7 @@ while ($row = mysqli_fetch_row($all_invoices)){
           <td><button name='choice' value='$row[0]' form='delete' type='submit'>usuń fakturę</button></td></tr>";
 }
 echo "</table>";
-$con -> close();
+$con -> getConnection() -> close();
 ?>
     </body>
 </html>
