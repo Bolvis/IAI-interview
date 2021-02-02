@@ -34,10 +34,16 @@ $html = "
         <td style=\"text-align: center; font-size:14px;\">Faktura nr $choice<br></td>
     </tr>
     <tr>
-        <td><p>Data wystawienia: $invoice_data_array[4] &nbsp; Data sprzedaży: $invoice_data_array[2]</p></td>
+        <td><b>Data wystawienia:</b> $invoice_data_array[4]</td>
     </tr>
     <tr>
-        <td><p>Termin płatności: $invoice_data_array[3] &nbsp;&nbsp;&nbsp; Metoda płatności: $invoice_data_array[5]</p></td>
+        <td><b>Data sprzedaży:</b> $invoice_data_array[2]</td>
+    </tr>
+    <tr>
+        <td><b>Termin płatności:</b> $invoice_data_array[3]</td>
+    </tr>
+    <tr>
+        <td><b>Metoda płatności:</b> $invoice_data_array[5]</td>
     </tr>
 </table>
 <br>
@@ -153,14 +159,14 @@ $html .=
             <td class=\"products\"></td>            
             <td class=\"products\">zw</td>
             <td class=\"products\">$zw</td>
-            <td class=\"products\">0.00</td>
+            <td class=\"products\">0</td>
             <td class=\"products\">$zw</td>
         </tr>
         <tr>
             <td class=\"products\"></td>            
             <td class=\"products\">0%</td>
             <td class=\"products\">$zero</td>
-            <td class=\"products\">0.00</td>
+            <td class=\"products\">0</td>
             <td class=\"products\">$zero</td>
         </tr>
         <tr>
