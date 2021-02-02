@@ -3,7 +3,6 @@
 
 class Connection
 {
-   /* @private  */
     private $connection;
 
     public function __construct(){
