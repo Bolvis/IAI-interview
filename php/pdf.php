@@ -97,9 +97,9 @@ while ($row = mysqli_fetch_row($rows_data)){
     $vat = $row[6];
     $price_brutto = (float)$row[5];
     $quantity = (int)$row[3];
-    $price_netto = $vat != "zw" ?  (1.0 - $vat/100) * $price_brutto : $price_brutto;
+    $price_netto = $vat != "zw" ?  round($price_brutto - ($price_brutto * $vat/100)/(1+$vat/100), 2): $price_brutto;
     $value_brutto = $price_brutto * $quantity;
-    $value_netto = $vat != "zw" ?  (1.0 - $vat/100) * $value_brutto : $value_brutto;
+    $value_netto = $vat != "zw" ?  round($value_brutto - ($value_brutto * $vat/100)/(1+$vat/100), 2): $value_brutto;
     $html .= "<tr><td class=\"products\">$i</td>";
     $html .= "<td class=\"products\">$row[2]</td>";
     $html .= "<td class=\"products\">$row[4]</td>";
@@ -133,12 +133,12 @@ while ($row = mysqli_fetch_row($rows_data)){
 $html .= "</table><div></div>";
 #second table with summary
 $payed = (float)$invoice_data_array[6];
-$five_netto = round($five * 0.95,2);
-$five_vat = $five - $five_netto;
-$eight_netto = round($eight * 0.92,2);
-$eight_vat = $eight - $eight_netto;
-$twenty_three_netto = round($twenty_three * 0.77,2);
-$twenty_three_vat = $twenty_three - $twenty_three_netto;
+$five_vat = round(($five * 0.05)/1.05, 2);
+$five_netto = $five - $five_vat;
+$eight_vat = round(($eight * 0.08)/1.08, 2);
+$eight_netto = $eight - $eight_vat;
+$twenty_three_vat = round(($twenty_three * 0.23)/1.23, 2);
+$twenty_three_netto = $twenty_three - $twenty_three_vat;
 $summary_netto = $zw + $zero + $five_netto + $eight_netto + $twenty_three_netto;
 $summary_vat = $summary_brutto - $summary_netto;
 $summary = $summary_brutto - $payed;
