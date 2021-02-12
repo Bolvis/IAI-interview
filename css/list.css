@@ -1,15 +1,47 @@
-body{
+table{
+    margin: 0 auto 5vh;
+    clear: both;
+}
+
+tr{
+    margin-bottom: 2em;
+    background-color: beige;
+}
+
+td{
+    width: 15%;
+    padding: 1em 2em 1em 2em;
     text-align: center;
 }
 
-table{
-    margin: 0 auto;
+h1{
+    margin-bottom: 30vh;
 }
 
-a{
-    float: left;
+body{
+    font-family: "Roboto Condensed", sans-serif; /*font from your website :)*/
+    text-align: center;
 }
 
 h1{
-    clear: both;
+    margin: 2% auto 2%;
+    border-bottom: 3px solid lightskyblue;
+    width: 30%;
+    padding-bottom: 1%;
+}
+
+a, button{
+    border: none;
+    background-color: lightskyblue;
+    padding: 1em 2em 1em 2em;
+    text-decoration: none;
+    color: black;
+}
+
+button:focus{
+     outline: none;
+ }
+
+a{
+    float: left;
 }
